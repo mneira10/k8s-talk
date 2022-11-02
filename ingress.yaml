@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: awesome-dogs-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dogs.cluster-test.upcodes.co
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: awesome-dogs-service
+              port:
+                number: 80

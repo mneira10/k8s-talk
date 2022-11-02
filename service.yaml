@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: awesome-dogs-service
+  labels:
+    app: k8s-talk
+spec:
+  type: ClusterIP
+  selector:
+    app: k8s-talk
+  ports:
+    - port: 80
+      targetPort: http-port

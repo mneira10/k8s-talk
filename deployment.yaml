@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awesome-dogs-deployment
+  labels:
+    app: k8s-talk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-talk
+  template:
+    metadata:
+      labels:
+        app: k8s-talk
+    spec:
+      containers:
+        - name: awesome-dogs-container
+          imagePullPolicy: Always
+          image: mneira011/k8s-talk:latest
+          ports:
+            - name: http-port
+              containerPort: 8000
+          resources:
+            requests:
+              memory: "64M"
+              cpu: "0.25"
+            limits:
+              memory: "128M"
+              cpu: "0.5"
+        # You could have more than one container!

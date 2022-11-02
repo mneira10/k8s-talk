@@ -39,13 +39,19 @@ kubectl apply -f service.yaml
 
 # binds to a specific pod!! Not to a service
 kubectl port-forward svc/awesome-dogs-service 1234:80
+
+# Get shell k8s & curl for page, ids should change
+kubectl exec --stdin --tty <pod-name> -- /bin/bash
+
+# in pod, curl should get different ids!
+curl http://awesome-dogs-service
 ```
 
-## 4. Ingress
+## 4. Create Ingress
 
 ```shell
-
-
 # Ingress
 k apply -f ingress.yaml
 ```
+
+Visit http://dogs.cluster-test.upcodes.co
